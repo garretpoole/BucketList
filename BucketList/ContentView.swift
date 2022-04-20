@@ -4,36 +4,47 @@
 //
 //  Created by Garret Poole on 4/20/22.
 //
-//CHALLENGE
-//Proj 8 (astronaut) made generic Bundle extension to find, load, decode any kind of Codable data from our app bundle
-//Can you write something similar for document directory
-//extension on FileManager using getDocDirectory, load the file, decode it into right type all automatically
+
 import SwiftUI
 
-struct ContentView: View {
+enum LoadingState {
+    case loading, success, failed
+}
+
+struct LoadingView: View {
     var body: some View {
-        Text("Hello, world!")
-            .onTapGesture {
-                let str = "Test Message"
-                //what were writing to
-                let url = getDocumentsDirectory().appendingPathComponent("message.txt")
-                
-                do {
-                    //Swift native encoding is utf8
-                    try str.write(to: url, atomically: true, encoding: .utf8)
-                    
-                    let input = try String(contentsOf: url)
-                    print(input)
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
+        Text("Loading...")
     }
-    //find the private documents directory for the user for our app
-    //gets backed up to iCloud and no "limit" but takes up iPhone storage
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
+}
+struct SuccessView: View {
+    var body: some View {
+        Text("Sucess!")
+    }
+}
+struct FailedView: View {
+    var body: some View {
+        Text("Failed")
+    }
+}
+
+struct ContentView: View {
+    var loadingState = LoadingState.loading
+    var body: some View {
+        switch loadingState {
+        case .loading:
+            LoadingView()
+        case .success:
+            SuccessView()
+        case .failed:
+            FailedView()
+        }
+//        if loadingState == .loading {
+//            LoadingView()
+//        } else if loadingState == .success {
+//            SuccessView()
+//        } else if loadingState == .failed {
+//            FailedView()
+//        }
     }
 }
 
