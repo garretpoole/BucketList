@@ -4,35 +4,36 @@
 //
 //  Created by Garret Poole on 4/20/22.
 //
-
+//CHALLENGE
+//Proj 8 (astronaut) made generic Bundle extension to find, load, decode any kind of Codable data from our app bundle
+//Can you write something similar for document directory
+//extension on FileManager using getDocDirectory, load the file, decode it into right type all automatically
 import SwiftUI
 
-struct User: Identifiable, Comparable {
-    let id = UUID()
-    let firstname: String
-    let lastname: String
-    //built in comparable method (< operator) for .sorted()
-    static func < (lhs: User, rhs: User) -> Bool {
-        lhs.lastname < rhs.lastname
-    }
-}
-
 struct ContentView: View {
-    let values = [1, 5, 3, 6, 2, 9].sorted()
-    let users = [
-        User(firstname: "Arnold", lastname: "Rimmer"),
-        User(firstname: "Krisitine", lastname: "Kochanski"),
-        User(firstname: "David", lastname: "Lister")
-    ].sorted()
-//  can sort with closure but not efficient or clean when having to sort multiple data times
-//        .sorted {
-//        $0.lastname < $1.lastname
-//    }
-    
     var body: some View {
-        List(users) { user in
-            Text("\(user.firstname) \(user.lastname)")
-        }
+        Text("Hello, world!")
+            .onTapGesture {
+                let str = "Test Message"
+                //what were writing to
+                let url = getDocumentsDirectory().appendingPathComponent("message.txt")
+                
+                do {
+                    //Swift native encoding is utf8
+                    try str.write(to: url, atomically: true, encoding: .utf8)
+                    
+                    let input = try String(contentsOf: url)
+                    print(input)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+    }
+    //find the private documents directory for the user for our app
+    //gets backed up to iCloud and no "limit" but takes up iPhone storage
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
     }
 }
 
