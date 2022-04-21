@@ -11,6 +11,8 @@ import SwiftUI
 struct ContentView: View {
     @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 50, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25))
     @State private var locations = [Location]()
+    //for editing an already marked location
+    @State private var selectedPlace: Location?
     
     var body: some View {
         ZStack {
@@ -26,6 +28,9 @@ struct ContentView: View {
                             .clipShape(Circle())
                         
                         Text(location.name)
+                    }
+                    .onTapGesture {
+                        selectedPlace = location
                     }
                 }
             }
@@ -52,6 +57,14 @@ struct ContentView: View {
                     .font(.title)
                     .clipShape(Circle())
                     .padding(.trailing)
+                }
+            }
+        }
+        //auto unwraps the optional
+        .sheet(item: $selectedPlace) { place in
+            Edit(location: place) { newLocation in
+                if let index = locations.firstIndex(of: place) {
+                    locations[index] = newLocation
                 }
             }
         }
