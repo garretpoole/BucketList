@@ -14,6 +14,8 @@
 		602A2E3D2811533600172CDB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602A2E3C2811533600172CDB /* Location.swift */; };
 		602A2E412811575C00172CDB /* Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602A2E402811575C00172CDB /* Edit.swift */; };
 		602A2E4328129D2100172CDB /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602A2E4228129D2100172CDB /* Result.swift */; };
+		602A2E452812A28700172CDB /* ContentView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602A2E442812A28700172CDB /* ContentView-ViewModel.swift */; };
+		602A2E472812A65B00172CDB /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602A2E462812A65B00172CDB /* FileManager-DocumentsDirectory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		602A2E3C2811533600172CDB /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		602A2E402811575C00172CDB /* Edit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edit.swift; sourceTree = "<group>"; };
 		602A2E4228129D2100172CDB /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		602A2E442812A28700172CDB /* ContentView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView-ViewModel.swift"; sourceTree = "<group>"; };
+		602A2E462812A65B00172CDB /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 			children = (
 				602A2E2E2810087F00172CDB /* BucketListApp.swift */,
 				602A2E302810087F00172CDB /* ContentView.swift */,
+				602A2E442812A28700172CDB /* ContentView-ViewModel.swift */,
+				602A2E462812A65B00172CDB /* FileManager-DocumentsDirectory.swift */,
 				602A2E4228129D2100172CDB /* Result.swift */,
 				602A2E402811575C00172CDB /* Edit.swift */,
 				602A2E3C2811533600172CDB /* Location.swift */,
@@ -147,6 +153,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				602A2E312810087F00172CDB /* ContentView.swift in Sources */,
+				602A2E472812A65B00172CDB /* FileManager-DocumentsDirectory.swift in Sources */,
+				602A2E452812A28700172CDB /* ContentView-ViewModel.swift in Sources */,
 				602A2E4328129D2100172CDB /* Result.swift in Sources */,
 				602A2E3D2811533600172CDB /* Location.swift in Sources */,
 				602A2E2F2810087F00172CDB /* BucketListApp.swift in Sources */,
