@@ -8,7 +8,7 @@
 import Foundation
 import MapKit
 
-//model view view-model design pattern implemented (MVVM)
+//MVVM (model view view-model) design pattern implemented
 //separate logic form layout; makes testing easier
 extension ContentView {
     //mainactor responsible for running all Ui updates
