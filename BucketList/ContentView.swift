@@ -49,13 +49,14 @@ struct ContentView: View {
                             viewModel.addLocation()
                         } label: {
                             Image(systemName: "plus")
+                                .padding()
+                                .background(.black.opacity(0.75))
+                                .foregroundColor(.white)
+                                .font(.title)
+                                .clipShape(Circle())
+                                .padding(.trailing)
                         }
-                        .padding()
-                        .background(.black.opacity(0.75))
-                        .foregroundColor(.white)
-                        .font(.title)
-                        .clipShape(Circle())
-                        .padding(.trailing)
+                        
                     }
                 }
             }
@@ -74,6 +75,13 @@ struct ContentView: View {
             .background(.blue)
             .foregroundColor(.white)
             .clipShape(Capsule())
+            
+            //alerts for biometric errors
+            .alert("Biometrics Needed", isPresented: $viewModel.showingNoBioAlert) {
+                Button("OK") {}
+            } message: {
+                Text("Need Face/Touch ID enabled")
+            }
         }
     }
 }

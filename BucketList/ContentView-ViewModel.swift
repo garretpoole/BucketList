@@ -21,6 +21,8 @@ extension ContentView {
         @Published var selectedPlace: Location?
         //check for if phone is unlocked
         @Published var isUnlocked = false
+        //alert for biometric auth
+        @Published var showingNoBioAlert = false
         
         //used for reading and writing files with the same file in both places
         //data is saved on disc (takes up phone storage) and much more flexible than UserDefaults
@@ -78,11 +80,13 @@ extension ContentView {
                         }
                     }
                     else {
-                        //error
+                        //error for face not recognized
+                        //auto handled by the faceID api
                     }
                 }
             } else {
-                //no biometrics available
+                //biometric authentication not available
+                self.showingNoBioAlert = true
             }
         }
         
